@@ -26,14 +26,14 @@ $(function() {
         }
     })
 
-    const layer = layui.layer
+    let layer = layui.layer
     // 点击注册按钮发起post请求
     $('#form_reg').on('submit',function(e) {
         e.preventDefault()
         let data = {username: $('#form_reg [name=username]').val(), password: $('#form_reg [name=password]').val()}
         $.post('/api/reguser', data, function(res) {
             if(res.status !== 0) {
-                return layer.msg(res.message)
+               return layer.msg(res.message)
             }
             layer.msg('注册成功！')
             $('#link_log').click()
@@ -46,7 +46,7 @@ $(function() {
         $.ajax({
             url: '/api/login',
             method: 'post',
-            data: $(this).serialize(),
+            data: $('#form_log').serialize(),
             success: function(res) {
                 if(res.status !== 0) {
                     return layer.msg('登录失败！')

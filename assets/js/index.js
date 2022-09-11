@@ -2,7 +2,7 @@ $(function() {
     getUserInfo()
 
     // 退出
-    const layer = layui.layer
+    let layer = layui.layer
     $('#btnLogout').on('click',function(){
         layer.confirm('是否确认退出？', {icon: 3, title:'提示'}, function(index){
             // 清除本地存储中的token
